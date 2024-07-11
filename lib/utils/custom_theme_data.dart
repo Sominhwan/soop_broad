@@ -7,7 +7,6 @@ class CustomThemeData {
     textTheme: lightTextTheme,
     scaffoldBackgroundColor: Colors.white,
     splashColor: Colors.transparent,
-    highlightColor: Colors.transparent,
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.black,
       labelColor: Colors.blue,
@@ -27,12 +26,14 @@ class CustomThemeData {
       showSelectedLabels: true,
       showUnselectedLabels: true,
       selectedLabelStyle: TextStyle(
-          fontSize: 10
+        fontSize: 12,
+        fontWeight: FontWeight.w600
       ),
       unselectedLabelStyle: TextStyle(
-          fontSize: 10
+        fontSize: 12,
+        fontWeight: FontWeight.w400
       ),
-      elevation: 20,
+      elevation: 5,
       enableFeedback: false,
     )
   );
@@ -41,7 +42,6 @@ class CustomThemeData {
     textTheme: darkTextTheme,
     scaffoldBackgroundColor: const Color.fromRGBO(45, 45, 45, 1),
     splashColor: Colors.transparent,
-    highlightColor: Colors.transparent,
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.white,
       labelColor: Colors.blue,
@@ -61,12 +61,14 @@ class CustomThemeData {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         selectedLabelStyle: TextStyle(
-          fontSize: 10
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
         ),
         unselectedLabelStyle: TextStyle(
-          fontSize: 10
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
         ),
-        elevation: 20,
+        elevation: 5,
         enableFeedback: false,
       )
   );

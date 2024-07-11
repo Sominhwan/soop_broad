@@ -62,30 +62,13 @@ class SoopMobileApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ko'),
             ],
-            home: SplashView(
-              loadingIndicator: const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: CircularProgressIndicator(),
-              ),
-              // backgroundImageDecoration: const BackgroundImageDecoration(
-              //   image: AssetImage('Assets/images/splash_background.png'),
-              // ),
-              // logo: SvgPicture.asset('Assets/images/splash_logo.svg'),
-              done: Done(
-                const MainView(),
-                animationDuration: const Duration(milliseconds: 750),
-                curve: Curves.ease,
-              ),
-              showStatusBar: true,
-            ),
+            home: const MainView(),
             debugShowCheckedModeBanner: false,
-            // theme: esgConstTheme,
             darkTheme: CustomThemeData.dark,
             theme: CustomThemeData.light,
             themeMode: mode,
             routes: routes,
             navigatorKey: NavigationService.navigatorKey,
-            //onGenerateRoute: generateRoute,
             navigatorObservers: [CustomRouteObserver()],
             //initialRoute: LoginView.path,
             builder: (context, child) {

@@ -1,11 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
 import 'package:soop_broad/views/home/home_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 
 import '../../common/drawer/custom_drawer.dart';
+import '../../common/widget/custom_toast_widget.dart';
 import '../../utils/custom_theme_mode.dart';
 
 class MainView extends StatefulWidget {
@@ -43,6 +45,33 @@ class _MainViewState extends State<MainView> {
   }
 
 
+  // 앱 종료시 뒤로가기 두번 누르기 이벤트
+  DateTime? currentBackPressTime;
+
+  Future<bool> handleBackPress() async {
+    final scaffoldState = _scaffoldKey.currentState;
+
+    if (scaffoldState?.isEndDrawerOpen ?? false) {
+      scaffoldState?.closeEndDrawer();
+      return false;
+    }
+
+    if (await _pageController.willPopAction()) {
+      final now = DateTime.now();
+
+      if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+        currentBackPressTime = now;
+        if (mounted) {
+          CustomToastWidget.showToast(context, '앱을 종료하려면 한번 더 누르세요', 80, false, null);
+        }
+        return false;
+      }
+      return true;
+    }
+
+    return false;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -51,17 +80,17 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     final MainProvider(
-        :page,
+      :page,
+      :appBarTitle
     ) = context.watch<MainProvider>();
 
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {
-        _pageController.willPopAction();
-        // bool result = onWillPop();
-        // if (result) {
-        //   SystemNavigator.pop();
-        // }
+      onPopInvoked: (didPop) async {
+        Future<bool> result = handleBackPress();
+        if (await result) {
+          SystemNavigator.pop();
+        }
       },
       child: SafeArea(
         child: ValueListenableBuilder<bool>(
@@ -70,7 +99,7 @@ class _MainViewState extends State<MainView> {
             return Scaffold(
               key: _scaffoldKey,
               appBar: CustomAppBar(
-                title: 'MY',
+                title: appBarTitle,
                 scaffoldKey: _scaffoldKey,
                 // bottom: _appBarTab(),
               ),
@@ -82,7 +111,7 @@ class _MainViewState extends State<MainView> {
                   BottomNavigationBarItem(
                       icon: Icon(Icons.home),
                       // activeIcon: Icon(Icons.home),
-                      label: 'home'),
+                      label: '홈'),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.sports),
                       // activeIcon: Icon(Icons.sports),

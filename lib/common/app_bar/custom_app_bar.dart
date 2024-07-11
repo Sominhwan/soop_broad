@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12, right: 0),
+                padding: const EdgeInsets.only(left: 20, right: 5),
                 child: Row(
                   children: [
                     Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: value ? Colors.black : Colors.white)),
@@ -49,7 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.notifications, color: value ? Colors.black : Colors.white),
+                      icon: Icon(Icons.notifications_outlined, color: value ? Colors.black : Colors.white),
                       onPressed: () {
                       },
                     ),
@@ -60,22 +60,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         CustomThemeMode.change();
                       },
                     ),
-                    // PopupMenuButton<String>(
-                    //   icon: Icon(Icons.add_circle, color: value ? Colors.black : Colors.white),
-                    //   onSelected: (String result) {
-                    //     // Menu item selected
-                    //   },
-                    //   itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                    //     const PopupMenuItem<String>(
-                    //       value: 'Item 1',
-                    //       child: Text('Item 1'),
-                    //     ),
-                    //     const PopupMenuItem<String>(
-                    //       value: 'Item 2',
-                    //       child: Text('Item 2'),
-                    //     ),
-                    //   ],
-                    // ),
                     leading ?? IconButton(
                       icon: Icon(Icons.menu, color: value ? Colors.black : Colors.white),
                       onPressed: () {
