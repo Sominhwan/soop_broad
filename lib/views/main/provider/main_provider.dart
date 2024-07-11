@@ -7,15 +7,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 enum Page { HOME, SPORTS, MYPAGE, ADD  }
 
 class MainProvider extends ChangeNotifier {
-  final RxInt _page = 0.obs;
-  int get pageIndex => _page.value;
-
-  // int currentIndex  = 0;
-
-  // void changeCurreentIndex(value) {
-  //   currentIndex = value;
-  //   notifyListeners();
-  // }
+  int page = 0;
 
   List bottomHistory = [0];
 
@@ -31,8 +23,7 @@ class MainProvider extends ChangeNotifier {
   }
 
   void moveTo(int value) {
-    print(value);
-    _page(value);
+    page = value;
     if (bottomHistory.last != value && Platform.isAndroid) {
       bottomHistory.add(value);
     }
@@ -44,13 +35,14 @@ class MainProvider extends ChangeNotifier {
       return true;
     } else {
       bottomHistory.removeLast();
-      _page(bottomHistory.last);
-      print(bottomHistory);
+      page = bottomHistory.last;
       return false;
     }
   }
 
   void onInit() {}
 
-  void onDispose() {}
+  void onDispose() {
+    page = 0;
+  }
 }

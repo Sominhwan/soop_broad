@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
+import 'package:soop_broad/views/home/home_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 
 import '../../common/drawer/custom_drawer.dart';
@@ -17,28 +18,17 @@ class MainView extends StatefulWidget {
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin {
+class _MainViewState extends State<MainView> {
   // drawer key
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  // TabController 추가
-  late TabController _tabController;
   late final _pageController = context.read<MainProvider>();
 
   Widget _body() {
     return IndexedStack(
-      index: _pageController.pageIndex,
-      children: [
-        TabBarView(
-          controller: _tabController,
-          children: [
-            Center(child: Text('Home Content', style: TextStyle(fontSize: 20),)),
-            Center(child: Text('Favorites Content')),
-            Center(child: Text('Profile Content')),
-          ],
-        ),
-        Center(
-          child: Text('search'),
-        ),
+      index: _pageController.page,
+      children: const [
+        HomeView(),
+        Text('search'),
         Center(
           child: Text('upload'),
         ),
@@ -52,27 +42,16 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
     );
   }
 
-  PreferredSizeWidget _appBarTab(index) {
-    return TabBar(
-      controller: _tabController,
-      tabs: [
-        Tab(child: Text('Home')),
-        Tab(child: Text('Like')),
-        Tab(child: Text('Profile')),
-      ],
-    );
-  }
 
   @override
   void initState() {
     super.initState();
-    // 탭 컨트롤러 초기화
-    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
   }
+
   @override
   Widget build(BuildContext context) {
     final MainProvider(
-        :pageIndex,
+        :page,
     ) = context.watch<MainProvider>();
 
     return PopScope(
@@ -98,8 +77,8 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
               endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
               body: _body(),
               bottomNavigationBar: BottomNavigationBar(
-                currentIndex: pageIndex,
-                items: [
+                currentIndex: page,
+                items: const [
                   BottomNavigationBarItem(
                       icon: Icon(Icons.home),
                       // activeIcon: Icon(Icons.home),
