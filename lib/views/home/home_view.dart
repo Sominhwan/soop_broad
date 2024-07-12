@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:soop_broad/common/loading/skeleton_loading.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -32,19 +33,19 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
       children: [
         TabBar(
           controller: _tabController,
-          tabs: [
-            Tab(child: Text('Home')),
-            Tab(child: Text('Like')),
-            Tab(child: Text('Profile')),
+          tabs: const [
+            Tab(child: Text('홈')),
+            Tab(child: Text('좋아요')),
+            Tab(child: Text('프로필')),
           ],
         ),
         Expanded(
           child: TabBarView(
             controller: _tabController,
             children: [
-              Center(child: Text('Home Content', style: TextStyle(fontSize: 20),)),
-              Center(child: Text('Favorites Content')),
-              Center(child: Text('Profile Content')),
+              SkeletonLoading().mainSkeletonLoader(),
+              const Center(child: Text('좋아요')),
+              const Center(child: Text('프로필')),
             ],
           )
         )

@@ -1,60 +1,71 @@
 
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 enum Page { HOME, SPORTS, MY, MORE  }
 
 class MainProvider extends ChangeNotifier {
   int page = 0;
-
-  List bottomHistory = [0];
-  String appBarTitle = 'SOOP';
+  List<int> bottomHistory = [0];  // 타입 명시
+  String appBarTitle = '메인';
 
   void changeIndex(int value) {
     var page = Page.values[value];
     switch (page) {
       case Page.HOME:
-        appBarTitle = 'SOOP';
+        appBarTitle = '메인';
         moveTo(value);
+        break;
       case Page.SPORTS:
         appBarTitle = '스포츠';
         moveTo(value);
+        break;
       case Page.MY:
         appBarTitle = 'MY';
         moveTo(value);
+        break;
       case Page.MORE:
         appBarTitle = '더보기';
         moveTo(value);
+        break;
     }
   }
 
   void moveTo(int value) {
-    page = value;
-
-    if (bottomHistory.last != value && Platform.isAndroid) {
-      bottomHistory.add(value);
+    if (page != value) {
+      page = value;
+      if (!bottomHistory.contains(value) && Platform.isAndroid || Platform.isIOS) {
+        bottomHistory.add(value);
+      }
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   Future<bool> willPopAction() async {
-    if (bottomHistory.length == 1) {
-      print('진실');
-      return true;
-    } else {
+    if (bottomHistory.length > 1) {
       bottomHistory.removeLast();
       page = bottomHistory.last;
-      print('거짓${page}');
+      appBarTitle = getAppBarTitle(page);
       notifyListeners();
       return false;
+    } else {
+      appBarTitle = '메인';
+      return true;
     }
   }
 
-  void onInit() {}
+  String getAppBarTitle(int pageIndex) {
+    switch (pageIndex) {
+      case 0: return '메인';
+      case 1: return '스포츠';
+      case 2: return 'MY';
+      case 3: return '더보기';
+      default: return 'SOOP';
+    }
+  }
 
   void onDispose() {
     page = 0;
+    bottomHistory.clear();
   }
 }

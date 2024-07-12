@@ -30,20 +30,18 @@ class _MainViewState extends State<MainView> {
       index: _pageController.page,
       children: const [
         HomeView(),
-        Text('search'),
         Center(
-          child: Text('upload'),
+          child: Text('스포츠'),
         ),
         Center(
-          child: Text('reels'),
+          child: Text('MY'),
         ),
         Center(
-          child: Text('mypage'),
+          child: Text('더보기'),
         ),
       ],
     );
   }
-
 
   // 앱 종료시 뒤로가기 두번 누르기 이벤트
   DateTime? currentBackPressTime;
@@ -125,9 +123,7 @@ class _MainViewState extends State<MainView> {
                       // activeIcon: Icon(Icons.add),
                       label: '더보기'),
                 ],
-                onTap: (value) {
-                  _pageController.changeIndex(value);
-                },
+                onTap: (value) => _pageController.changeIndex(value),
               ),
             );
           }

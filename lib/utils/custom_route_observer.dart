@@ -27,9 +27,8 @@ class CustomRouteObserver extends RouteObserver<PageRoute> {
     updateRouteInformation(route, previousRoute);
   }
 
-  // TODO 20240614 고도화 작업시 메인 화면 api 호출 추가
   @override
-  Future<void> didPop(Route route, Route? previousRoute) async {
+  void didPop(Route route, Route? previousRoute) {
     super.didPop(route, previousRoute);
     updateRouteInformation(previousRoute, route);
   }
