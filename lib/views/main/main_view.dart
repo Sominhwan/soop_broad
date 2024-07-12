@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
 import 'package:soop_broad/views/home/home_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
+import 'package:soop_broad/views/more/more_view.dart';
 
 import '../../common/drawer/custom_drawer.dart';
 import '../../common/widget/custom_toast_widget.dart';
@@ -36,9 +37,7 @@ class _MainViewState extends State<MainView> {
         Center(
           child: Text('MY'),
         ),
-        Center(
-          child: Text('더보기'),
-        ),
+        MoreView()
       ],
     );
   }
@@ -119,7 +118,7 @@ class _MainViewState extends State<MainView> {
                       // activeIcon: Icon(Icons.my_library_add),
                       label: 'MY'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.add),
+                      icon: Icon(Icons.more_horiz),
                       // activeIcon: Icon(Icons.add),
                       label: '더보기'),
                 ],
