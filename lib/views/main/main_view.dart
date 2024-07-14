@@ -106,21 +106,21 @@ class _MainViewState extends State<MainView> {
                 currentIndex: page,
                 items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.home),
-                      // activeIcon: Icon(Icons.home),
-                      label: '홈'),
+                    icon: Icon(Icons.home),
+                    // activeIcon: Icon(Icons.home),
+                    label: '홈'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.sports),
-                      // activeIcon: Icon(Icons.sports),
-                      label: '스포츠'),
+                    icon: Icon(Icons.sports),
+                    // activeIcon: Icon(Icons.sports),
+                    label: '스포츠'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.my_library_add),
-                      // activeIcon: Icon(Icons.my_library_add),
-                      label: 'MY'),
+                    icon: Icon(Icons.my_library_add),
+                    // activeIcon: Icon(Icons.my_library_add),
+                    label: 'MY'),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.more_horiz),
-                      // activeIcon: Icon(Icons.add),
-                      label: '더보기'),
+                    icon: Icon(Icons.more_horiz),
+                    // activeIcon: Icon(Icons.add),
+                    label: '더보기'),
                 ],
                 onTap: (value) => _pageController.changeIndex(value),
               ),

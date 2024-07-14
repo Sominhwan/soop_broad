@@ -9,8 +9,6 @@ import 'package:soop_broad/utils/custom_theme_mode.dart';
 import 'package:soop_broad/utils/navigation_service.dart';
 import 'package:soop_broad/views/main/main_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
-import 'package:splash_view/source/presentation/pages/splash_view.dart';
-import 'package:splash_view/source/presentation/widgets/done.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +28,6 @@ void main() async {
   ]);
 
   CustomThemeMode.instance;
-
   runApp(const SoopMobileApp());
 }
 

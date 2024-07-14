@@ -19,7 +19,7 @@ class _MoreViewState extends State<MoreView> {
         return Container(
           width: double.infinity,
           height: double.infinity,
-          color: value ? const Color.fromRGBO(240, 240, 240, 1) : const Color.fromRGBO(30, 30, 30, 1),
+          color: value ? const Color.fromRGBO(240, 240, 240, 1) : const Color.fromRGBO(40, 40, 40, 1),
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -29,6 +29,7 @@ class _MoreViewState extends State<MoreView> {
                   physics: ClampingScrollPhysics(),
                   child: Column(
                     children: [
+
                     ],
                   ),
                 ),

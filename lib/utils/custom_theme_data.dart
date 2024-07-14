@@ -7,6 +7,7 @@ class CustomThemeData {
     textTheme: lightTextTheme,
     scaffoldBackgroundColor: Colors.white,
     splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.black,
       labelColor: Colors.blue,
@@ -25,12 +26,18 @@ class CustomThemeData {
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: true,
       showUnselectedLabels: true,
+      selectedIconTheme: IconThemeData(
+        size: 24
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: 24
+      ),
       selectedLabelStyle: TextStyle(
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w600
       ),
       unselectedLabelStyle: TextStyle(
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w400
       ),
       elevation: 5,
@@ -53,6 +60,7 @@ class CustomThemeData {
     textTheme: darkTextTheme,
     scaffoldBackgroundColor: const Color.fromRGBO(45, 45, 45, 1),
     splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.white,
       labelColor: Colors.blue,
@@ -71,12 +79,18 @@ class CustomThemeData {
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: true,
       showUnselectedLabels: true,
+      selectedIconTheme: IconThemeData(
+        size: 24
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: 24
+      ),
       selectedLabelStyle: TextStyle(
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w600,
       ),
       unselectedLabelStyle: TextStyle(
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w400,
       ),
       elevation: 5,
@@ -94,7 +108,7 @@ class CustomThemeData {
       titleTextStyle: TextStyle(color: Colors.white),
     ),
   );
-
+  /// 라이트 모드 textStyle
   static const TextTheme lightTextTheme = TextTheme(
     bodyLarge: TextStyle(color: Colors.black),
     bodyMedium: TextStyle(color: Colors.black),
@@ -112,7 +126,7 @@ class CustomThemeData {
     titleMedium: TextStyle(color: Colors.black),
     titleSmall: TextStyle(color: Colors.black),
   );
-
+  /// 다크 모드 textStyle
   static const TextTheme darkTextTheme = TextTheme(
     bodyLarge: TextStyle(color: Colors.white),
     bodyMedium: TextStyle(color: Colors.white),

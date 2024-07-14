@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 padding: const EdgeInsets.only(left: 20, right: 5),
                 child: Row(
                   children: [
-                    Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: value ? Colors.black : Colors.white)),
+                    Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: value ? Colors.black : Colors.white)),
                     const Spacer(),
                     IconButton(
                       icon: Icon(Icons.search, color: value ? Colors.black : Colors.white),
