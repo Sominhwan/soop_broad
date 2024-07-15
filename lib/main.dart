@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:soop_broad/common/loading/custom_loading.dart';
 import 'package:soop_broad/utils/custom_route_observer.dart';
 import 'package:soop_broad/utils/custom_theme_data.dart';
 import 'package:soop_broad/utils/custom_theme_mode.dart';
@@ -10,14 +11,10 @@ import 'package:soop_broad/utils/navigation_service.dart';
 import 'package:soop_broad/views/main/main_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // MediaStorePlugin().initMediaStore();
-  EasyLoading()
-    ..userInteractions = false
-    ..dismissOnTap = false
-    ..loadingStyle = EasyLoadingStyle.dark;
 
   await Future.wait([
     //스크린 세로모드 고정
@@ -30,6 +27,7 @@ void main() async {
   CustomThemeMode.instance;
   runApp(const SoopMobileApp());
 }
+
 
 final routes = {
   MainView.path: (context) => const MainView(), // 메인화면
@@ -59,7 +57,11 @@ class SoopMobileApp extends StatelessWidget {
             supportedLocales: const [
               Locale('ko'),
             ],
-            home: const MainView(),
+            home: Builder(builder: (context) {
+              CustomRouteObserver().setContext(context);
+              CustomLoadingContext().setContext(context);
+              return const MainView();
+            }),
             debugShowCheckedModeBanner: false,
             darkTheme: CustomThemeData.dark,
             theme: CustomThemeData.light,
@@ -69,10 +71,7 @@ class SoopMobileApp extends StatelessWidget {
             navigatorObservers: [CustomRouteObserver()],
             //initialRoute: LoginView.path,
             builder: (context, child) {
-              CustomRouteObserver().setContext(context);
-              final loader = EasyLoading.init(
-                // builder: AppVersionChecker.init(),
-              );
+              final loader = EasyLoading.init();
               return MediaQuery(
                 data: mediaQuery.copyWith(textScaler: TextScaler.noScaling),
                 child: loader(context, child),
