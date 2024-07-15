@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:soop_broad/common/loading/custom_loading.dart';
+import 'package:soop_broad/utils/loading_message.dart';
 
 import '../../utils/custom_theme_mode.dart';
 
@@ -40,7 +41,7 @@ class _MoreViewState extends State<MoreView> {
                     children: [
                       InkWell(
                         onTap: () {
-                          test().wrapLoading('로딩중');
+                          test().wrapLoading(constMsgLoading);
                         },
                         child: const Text('테스트'),
                       )
