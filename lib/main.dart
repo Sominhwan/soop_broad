@@ -11,6 +11,8 @@ import 'package:soop_broad/utils/navigation_service.dart';
 import 'package:soop_broad/views/main/main_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 
+import 'common/widget/custom_toast_widget.dart';
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
@@ -60,6 +62,7 @@ class SoopMobileApp extends StatelessWidget {
             home: Builder(builder: (context) {
               CustomRouteObserver().setContext(context);
               CustomLoadingContext().setContext(context);
+              CustomToastContext().setContext(context);
               return const MainView();
             }),
             debugShowCheckedModeBanner: false,

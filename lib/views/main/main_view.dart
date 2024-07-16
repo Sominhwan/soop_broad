@@ -58,9 +58,7 @@ class _MainViewState extends State<MainView> {
 
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
         currentBackPressTime = now;
-        if (mounted) {
-          CustomToastWidget.showToast(context, '앱을 종료하려면 한번 더 누르세요', 80, false, null);
-        }
+        CustomToastWidget.showToast('앱을 종료하려면 한번 더 누르세요', 80, false, null);
         return false;
       }
       return true;
@@ -102,27 +100,34 @@ class _MainViewState extends State<MainView> {
               ),
               endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
               body: _body(),
-              bottomNavigationBar: BottomNavigationBar(
-                currentIndex: page,
-                items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    // activeIcon: Icon(Icons.home),
-                    label: '홈'),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.sports),
-                    // activeIcon: Icon(Icons.sports),
-                    label: '스포츠'),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.my_library_add),
-                    // activeIcon: Icon(Icons.my_library_add),
-                    label: 'MY'),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.more_horiz),
-                    // activeIcon: Icon(Icons.add),
-                    label: '더보기'),
-                ],
-                onTap: (value) => _pageController.changeIndex(value),
+              bottomNavigationBar: Theme(
+                data: Theme.of(context).copyWith(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  splashFactory: NoSplash.splashFactory,
+                ),
+                child: BottomNavigationBar(
+                  currentIndex: page,
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      // activeIcon: Icon(Icons.home),
+                      label: '홈'),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.sports),
+                      // activeIcon: Icon(Icons.sports),
+                      label: '스포츠'),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.my_library_add),
+                      // activeIcon: Icon(Icons.my_library_add),
+                      label: 'MY'),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.more_horiz),
+                      // activeIcon: Icon(Icons.add),
+                      label: '더보기'),
+                  ],
+                  onTap: (value) => _pageController.changeIndex(value),
+                ),
               ),
             );
           }

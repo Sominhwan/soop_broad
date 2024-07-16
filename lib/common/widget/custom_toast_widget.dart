@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+class CustomToastContext {
+  static final CustomToastContext _instance = CustomToastContext._internal();
+
+  factory CustomToastContext() {
+    return _instance;
+  }
+
+  CustomToastContext._internal();
+
+  BuildContext? _context;
+
+  void setContext(BuildContext context) {
+    _context = context;
+  }
+
+  BuildContext? get context => _context;
+}
+
 class CustomToastWidget extends StatefulWidget {
   final VoidCallback onDismissed;
   final String text;
@@ -16,7 +34,9 @@ class CustomToastWidget extends StatefulWidget {
     this.bottom = 95
   });
 
-  static void showToast(BuildContext context, String text, double bottom, bool appIconFlag, Color? backgroundColor, {VoidCallback? onDismissed}) {
+  static void showToast(String text, double bottom, bool appIconFlag, Color? backgroundColor, {VoidCallback? onDismissed}) {
+    final context = CustomToastContext().context!;
+
     OverlayEntry overlayEntry = OverlayEntry(
       builder: (context) => CustomToastWidget(
         onDismissed: () => onDismissed?.call(),

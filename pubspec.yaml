@@ -129,7 +129,6 @@ dependencies:
   custom_refresh_indicator: ^3.1.1
   # 로딩바
   flutter_spinkit: ^5.2.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
