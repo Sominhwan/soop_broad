@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-
     <!-- 알람을 위해서  꺼져있을경우 깨우기 -->
     <!-- 화면 켜짐 유지 -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -13,7 +12,7 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
     <!-- 장확한 알림 -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+<!--    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>-->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" android:minSdkVersion="33"/>
 
     <uses-permission android:name="android.permission.CAMERA"/>

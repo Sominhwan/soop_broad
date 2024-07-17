@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:soop_broad/common/loading/skeleton_loading.dart';
-import 'package:soop_broad/utils/notification/local_notification.dart';
+import 'package:soop_broad/utils/notification/local/local_notification.dart';
 import 'package:soop_broad/utils/permission/permission_handler.dart';
 
 class HomeView extends StatefulWidget {
@@ -138,6 +138,18 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
             await permissionsHandler.openAppSettingsScreen();
           },
           child: const Text('권한 설정 열기'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            LocalNotification().cancel(1);
+          },
+          child: const Text('알림 취소')
+        ),
+        ElevatedButton(
+          onPressed: () {
+            LocalNotification().cancelAll();
+          },
+          child: const Text('알림 전체 취소')
         ),
       ],
     );

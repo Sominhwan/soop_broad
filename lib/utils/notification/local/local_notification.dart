@@ -9,7 +9,7 @@ import 'package:timezone/timezone.dart' as tz;
 class LocalNotification {
   final FlutterLocalNotificationsPlugin _local = FlutterLocalNotificationsPlugin();
 
-  /// Andorid
+  /// Android
   // channelId : 고유한 id 값을 사용.
   // channelName : 앱 설정 > 알림에 보여지는 네임.
   // channelDescription : 해당 채널에 대한 설명.
@@ -33,7 +33,8 @@ class LocalNotification {
       autoCancel: false, // 사용자가 알림을 클릭해도 알림이 사라지지 않도록 설정
     ),
   );
-
+  
+  /// local notification 초기화
   void initialization() async {
     log('flutter local notification 초기화');
     AndroidInitializationSettings android = const AndroidInitializationSettings("@mipmap/ic_launcher");
@@ -42,16 +43,18 @@ class LocalNotification {
       requestBadgePermission: false,
       requestAlertPermission: false,
     );
-    InitializationSettings settings =
-    InitializationSettings(android: android, iOS: ios);
+
+    InitializationSettings settings = InitializationSettings(android: android, iOS: ios);
     await _local.initialize(settings);
   }
 
+  /// local notification 시간 초기화
   void initializationTime() async {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
   }
 
+  /// local notification 보내기
   void sendMessage() async {
     /// show(id, title, body, notificationDetails, payload
     // id : Unique Id, 중복되지 않아야 함. 알림 그룹별로 id 값을 지정하여 사용함.
@@ -62,6 +65,7 @@ class LocalNotification {
     await _local.show(1, '타이틀', '내용', details);
   }
 
+  /// local notification 시간별 보내기
   void sendPeriodicallyMessage() async {
     // 2024-01-22 00:00:00.000Z
     // tz.TZDateTime now = tz.TZDateTime.now(tz.local);
@@ -77,5 +81,15 @@ class LocalNotification {
       UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: null,
     );
+  }
+
+  /// local notification 취소
+  void cancel(int channelId) async {
+    await _local.cancel(channelId);
+  }
+  
+  /// local notification 전체쥐소
+  void cancelAll() async {
+    await _local.cancelAll();
   }
 }
