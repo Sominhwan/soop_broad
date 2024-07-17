@@ -13,7 +13,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin{
-  // TabController 추가
   late TabController _tabController;
 
   @override
