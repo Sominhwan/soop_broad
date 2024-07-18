@@ -56,7 +56,6 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 }
 
-
 class LikeTab extends StatefulWidget {
   const LikeTab({super.key});
 
