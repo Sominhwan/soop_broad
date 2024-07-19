@@ -22,7 +22,6 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  // drawer key
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   late final _pageController = context.read<MainProvider>();
 
@@ -63,7 +62,6 @@ class _MainViewState extends State<MainView> {
       }
       return true;
     }
-
     return false;
   }
 
