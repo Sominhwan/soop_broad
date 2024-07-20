@@ -19,7 +19,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Future.wait([
-    //스크린 세로모드 고정
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
