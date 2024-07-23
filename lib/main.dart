@@ -31,7 +31,7 @@ void main() async {
 
 
 final routes = {
-  MainView.path: (context) => const MainView(), // 메인화면
+  MainView.path: (context) => const MainView(),
 };
 
 class SoopMobileApp extends StatelessWidget {
