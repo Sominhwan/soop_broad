@@ -34,14 +34,14 @@ class CustomToastWidget extends StatefulWidget {
     this.bottom = 95
   });
 
-  static void showToast(String text, double bottom, bool appIconFlag, Color? backgroundColor, {VoidCallback? onDismissed}) {
+  static void showToast({required String text, required double bottom, bool? appIconFlag, Color? backgroundColor, VoidCallback? onDismissed}) {
     final context = CustomToastContext().context!;
 
     OverlayEntry overlayEntry = OverlayEntry(
       builder: (context) => CustomToastWidget(
         onDismissed: () => onDismissed?.call(),
         text: text,
-        appIconFlag: appIconFlag,
+        appIconFlag: appIconFlag ?? false,
         backgroundColor: backgroundColor ?? const Color.fromRGBO(100, 100, 100, 0.9),
         bottom: bottom,
       ),

@@ -118,14 +118,24 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
         ),
         ElevatedButton(
           onPressed: () {
-            LocalNotification().sendMessage();
+            LocalNotification().sendMessage(
+              channelId: 'channel_id',
+              id: 1,
+              foregroundAlarm: false,
+              ongoing: true,
+              autoCancel: false,
+              subText: '오늘의 알림',
+              showWhen: false,
+              title: '타이틀',
+              content: '내용'
+            );
           },
           child: const Text('메시지 전송'),
         ),
         ElevatedButton(
           onPressed: () async {
             LocalNotification().initializationTime();
-            LocalNotification().sendPeriodicallyMessage();
+            // LocalNotification().sendPeriodicallyMessage();
           },
           child: const Text('시간별 메시지 전송'),
         ),

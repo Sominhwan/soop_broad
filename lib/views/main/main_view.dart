@@ -57,7 +57,7 @@ class _MainViewState extends State<MainView> {
 
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
         currentBackPressTime = now;
-        CustomToastWidget.showToast('앱을 종료하려면 한번 더 누르세요', 80, false, null);
+        CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
         return false;
       }
       return true;
