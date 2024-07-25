@@ -127,7 +127,8 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
               subText: '오늘의 알림',
               showWhen: false,
               title: '타이틀',
-              content: '내용'
+              content: '내용',
+              payload: '텍스트 메시지 입니다.'
             );
           },
           child: const Text('메시지 전송'),

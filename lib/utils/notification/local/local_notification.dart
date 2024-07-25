@@ -28,13 +28,28 @@ class LocalNotification {
     );
 
     InitializationSettings settings = InitializationSettings(android: android, iOS: ios);
-    await _local.initialize(settings);
+    await _local.initialize(
+      settings,
+      onDidReceiveNotificationResponse: notificationResponse
+    );
   }
 
   /// local notification 시간 초기화
   void initializationTime() async {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
+  }
+
+  /// local payload 이벤트 처리
+  void notificationResponse(NotificationResponse details) async {
+    log('Notification payload: ${details.payload}');
+    if (details.payload != null) {
+      // final data = jsonDecode(details.payload!);
+      _handleNotificationPayload(details.payload);
+    }
+  }
+  void _handleNotificationPayload(String? payload) {
+    log('Handling notification payload: $payload');
   }
 
   /// local notification 보내기
@@ -48,6 +63,7 @@ class LocalNotification {
     bool showWhen = false,
     String? title,
     String? content,
+    String? payload
   }) async {
     NotificationDetails details = NotificationDetails(
       iOS: DarwinNotificationDetails(
@@ -67,7 +83,7 @@ class LocalNotification {
       ),
     );
 
-    await _local.show(id, title, content, details,);
+    await _local.show(id, title, content, details, payload: payload);
   }
 
   /// local notification 시간별 보내기
