@@ -16,7 +16,8 @@ class CustomRouteObserver extends RouteObserver<PageRoute> {
   String? previousRouteName;
   Object? previousArguments;
 
-  BuildContext? context; // BuildContext 추가
+  BuildContext? context;
+
   void setContext(BuildContext ctx) {
     context = ctx;
   }
