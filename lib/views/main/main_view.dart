@@ -40,7 +40,6 @@ class _MainViewState extends State<MainView> {
       ],
     );
   }
-
   // 앱 종료시 뒤로가기 두번 누르기 이벤트
   DateTime? currentBackPressTime;
 
