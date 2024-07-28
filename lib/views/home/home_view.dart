@@ -65,15 +65,13 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
   final PermissionsHandler permissionsHandler = PermissionsHandler();
 
   void _permissionWithNotification() async {
-    if (await Permission.notification.isDenied &&
-        !await Permission.notification.isPermanentlyDenied) {
+    if (await Permission.notification.isDenied && !await Permission.notification.isPermanentlyDenied) {
       await permissionsHandler.requestNotificationPermission();
     }
   }
 
   void _permissionWithExactNotification() async {
-    if (await Permission.scheduleExactAlarm.isDenied &&
-        !await Permission.scheduleExactAlarm.isPermanentlyDenied) {
+    if (await Permission.scheduleExactAlarm.isDenied && !await Permission.scheduleExactAlarm.isPermanentlyDenied) {
       await permissionsHandler.requestExactNotificationPermission();
     }
   }
