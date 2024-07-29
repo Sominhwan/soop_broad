@@ -29,7 +29,6 @@ void main() async {
   runApp(const SoopMobileApp());
 }
 
-
 final routes = {
   MainView.path: (context) => const MainView(),
 };
