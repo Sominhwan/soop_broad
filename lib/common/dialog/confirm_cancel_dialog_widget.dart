@@ -23,7 +23,7 @@ class ConfirmCancelDialogWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.min, // Column의 크기를 자식들의 크기에 맞춤
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
