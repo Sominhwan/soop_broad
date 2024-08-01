@@ -47,10 +47,10 @@ class CustomLoading extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SpinKitFadingCircle( // FadingCube 모양 사용
-              color: Colors.white, // 색상 설정
-              size: 40.0, // 크기 설정
-              duration: Duration(seconds: 2), //속도 설정
+            const SpinKitFadingCircle(
+              color: Colors.white,
+              size: 40.0,
+              duration: Duration(seconds: 2),
             ),
             if (message != null) ...[
               const SizedBox(height: 15),
