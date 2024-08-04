@@ -108,7 +108,6 @@ class _MainViewState extends State<MainView> {
                   items: const [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home),
-                      // activeIcon: Icon(Icons.home),
                       label: '홈'),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.sports),
