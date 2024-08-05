@@ -14,7 +14,6 @@ class _SportsViewState extends State<SportsView> {
   final InAppLocalhostServer _localhostServer = InAppLocalhostServer();
   late InAppWebViewController _controller;
 
-
   bool isLoading = true;
   bool isError = false;
 
@@ -36,7 +35,7 @@ class _SportsViewState extends State<SportsView> {
       children: [
         InAppWebView(
           // initialUrlRequest: URLRequest(url: WebUri("http://localhost:8080/assets/html/daum_postcode.html")),
-          initialUrlRequest: URLRequest(url: WebUri("https://www.naver.com")),
+          initialUrlRequest: URLRequest(url: WebUri('https://www.naver.com')),
           onWebViewCreated: (controller) {
             _controller = controller;
             _controller.addJavaScriptHandler(
@@ -71,10 +70,7 @@ class _SportsViewState extends State<SportsView> {
           Container(
             color: const Color.fromRGBO(71, 71, 71, 1),
             child: const Center(
-              child: Text(
-                "페이지를 찾을 수 없습니다",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
+              child: Text('페이지를 찾을 수 없습니다', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             ),
           ),
         ],
