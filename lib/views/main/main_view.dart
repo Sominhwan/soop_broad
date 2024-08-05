@@ -6,6 +6,7 @@ import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
 import 'package:soop_broad/views/home/home_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 import 'package:soop_broad/views/more/more_view.dart';
+import 'package:soop_broad/views/sports/sports_view.dart';
 
 import '../../common/drawer/custom_drawer.dart';
 import '../../common/widget/custom_toast_widget.dart';
@@ -23,25 +24,13 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late final _pageController = context.read<MainProvider>();
-
-  Widget _body() {
-    return IndexedStack(
-      index: _pageController.page,
-      children: const [
-        HomeView(),
-        Center(
-          child: Text('스포츠'),
-        ),
-        Center(
-          child: Text('MY'),
-        ),
-        MoreView()
-      ],
-    );
-  }
-  // 앱 종료시 뒤로가기 두번 누르기 이벤트
+  late final PageController _pageController = PageController();
   DateTime? currentBackPressTime;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   Future<bool> handleBackPress() async {
     final scaffoldState = _scaffoldKey.currentState;
@@ -51,7 +40,9 @@ class _MainViewState extends State<MainView> {
       return false;
     }
 
-    if (await _pageController.willPopAction()) {
+    final mainProvider = context.read<MainProvider>();
+
+    if (await mainProvider.willPopAction()) {
       final now = DateTime.now();
 
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
@@ -65,68 +56,75 @@ class _MainViewState extends State<MainView> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final MainProvider(
-      :page,
-      :appBarTitle
+        :page,
+        :appBarTitle
     ) = context.watch<MainProvider>();
 
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) async {
-        Future<bool> result = handleBackPress();
-        if (await result) {
+        if (await handleBackPress()) {
           SystemNavigator.pop();
         }
       },
       child: SafeArea(
         child: ValueListenableBuilder<bool>(
-          valueListenable: CustomThemeMode.current,
-          builder: (context, value, child) {
-            return Scaffold(
-              key: _scaffoldKey,
-              appBar: CustomAppBar(
-                title: appBarTitle,
-                scaffoldKey: _scaffoldKey,
-                // bottom: _appBarTab(),
-              ),
-              endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
-              body: _body(),
-              bottomNavigationBar: Theme(
-                data: Theme.of(context).copyWith(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  splashFactory: NoSplash.splashFactory,
+            valueListenable: CustomThemeMode.current,
+            builder: (context, value, child) {
+              return Scaffold(
+                key: _scaffoldKey,
+                appBar: CustomAppBar(
+                  title: appBarTitle,
+                  scaffoldKey: _scaffoldKey,
                 ),
-                child: BottomNavigationBar(
-                  currentIndex: page,
-                  items: const [
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.home),
-                      label: '홈'),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.sports),
-                      label: '스포츠'),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.my_library_add),
-                      label: 'MY'),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.more_horiz),
-                      label: '더보기'),
+                endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
+                body: PageView(
+                  controller: _pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (index) => context.read<MainProvider>().changeIndex(index),
+                  children: const [
+                    HomeView(),
+                    SportsView(),
+                    Center(
+                      child: Text('MY'),
+                    ),
+                    MoreView()
                   ],
-                  onTap: (value) => _pageController.changeIndex(value),
                 ),
-              ),
-            );
-          }
+                bottomNavigationBar: Theme(
+                  data: Theme.of(context).copyWith(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    splashFactory: NoSplash.splashFactory,
+                  ),
+                  child: BottomNavigationBar(
+                    currentIndex: page,
+                    items: const [
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.home),
+                          label: '홈'),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.sports),
+                          label: '스포츠'),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.my_library_add),
+                          label: 'MY'),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.more_horiz),
+                          label: '더보기'),
+                    ],
+                    onTap: (value) {
+                      _pageController.jumpToPage(value);
+                      context.read<MainProvider>().changeIndex(value);
+                    },
+                  ),
+                ),
+              );
+            }
         ),
       ),
     );
   }
 }
-

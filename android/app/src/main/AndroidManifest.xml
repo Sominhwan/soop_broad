@@ -26,8 +26,9 @@
     <application
         android:label="soop_broad"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
-        <!-- 디바이스 잠금시 알림 보여주기 showWhenLocked, turnScreenOn = true -->
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
+    <!-- 디바이스 잠금시 알림 보여주기 showWhenLocked, turnScreenOn = true -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
