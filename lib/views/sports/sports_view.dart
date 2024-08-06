@@ -25,7 +25,7 @@ class _SportsViewState extends State<SportsView> {
 
   @override
   void dispose() {
-    _localhostServer.close();
+    // _localhostServer.close(); TODO 수정
     super.dispose();
   }
 
