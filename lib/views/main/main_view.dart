@@ -24,7 +24,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late final PageController _pageController = PageController();
+  // late final PageController _pageController = PageController();
   DateTime? currentBackPressTime;
 
   @override
@@ -59,7 +59,8 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     final MainProvider(
         :page,
-        :appBarTitle
+        :appBarTitle,
+        :pageController
     ) = context.watch<MainProvider>();
 
     return PopScope(
@@ -81,7 +82,7 @@ class _MainViewState extends State<MainView> {
                 ),
                 endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
                 body: PageView(
-                  controller: _pageController,
+                  controller: pageController,
                   physics: const NeverScrollableScrollPhysics(),
                   onPageChanged: (index) => context.read<MainProvider>().changeIndex(index),
                   children: const [
@@ -116,7 +117,7 @@ class _MainViewState extends State<MainView> {
                           label: '더보기'),
                     ],
                     onTap: (value) {
-                      _pageController.jumpToPage(value);
+                      pageController.jumpToPage(value);
                       context.read<MainProvider>().changeIndex(value);
                     },
                   ),

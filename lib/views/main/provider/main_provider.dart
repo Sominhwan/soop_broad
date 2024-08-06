@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 enum Page { HOME, SPORTS, MY, MORE  }
 
 class MainProvider extends ChangeNotifier {
+  late final PageController pageController = PageController();
+
   int page = 0;
   List<int> bottomHistory = [0];  // 타입 명시
   String appBarTitle = '메인';
@@ -46,6 +48,7 @@ class MainProvider extends ChangeNotifier {
       bottomHistory.removeLast();
       page = bottomHistory.last;
       appBarTitle = getAppBarTitle(page);
+      pageController.jumpToPage(page);
       notifyListeners();
       return false;
     } else {

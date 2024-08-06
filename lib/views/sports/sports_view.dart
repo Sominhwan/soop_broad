@@ -34,8 +34,8 @@ class _SportsViewState extends State<SportsView> {
     return Stack(
       children: [
         InAppWebView(
-          // initialUrlRequest: URLRequest(url: WebUri("http://localhost:8080/assets/html/daum_postcode.html")),
-          initialUrlRequest: URLRequest(url: WebUri('https://www.naver.com')),
+          // initialUrlRequest: URLRequest(url: WebUri('http://localhost:8080/assets/html/daum_postcode.html')),
+          initialUrlRequest: URLRequest(url: WebUri('https://m.naver.com/')),
           onWebViewCreated: (controller) {
             _controller = controller;
             _controller.addJavaScriptHandler(
