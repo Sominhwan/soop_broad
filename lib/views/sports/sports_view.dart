@@ -39,12 +39,13 @@ class _SportsViewState extends State<SportsView> {
           onWebViewCreated: (controller) {
             _controller = controller;
             _controller.addJavaScriptHandler(
-                handlerName: 'onSelectAddress',
-                callback: (args) {
-                  // Map<String, dynamic> fromMap = args.first;
-                  // DaumPostModel data = _dataSetting(fromMap);
-                  // Navigator.of(context).pop(data);
-                });
+              handlerName: 'onSelectAddress',
+              callback: (args) {
+                // Map<String, dynamic> fromMap = args.first;
+                // DaumPostModel data = _dataSetting(fromMap);
+                // Navigator.of(context).pop(data);
+              }
+            );
           },
           onLoadStop: (controller, url) {
             setState(() {
