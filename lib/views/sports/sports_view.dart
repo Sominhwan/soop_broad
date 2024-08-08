@@ -62,9 +62,7 @@ class _SportsViewState extends State<SportsView> {
         ),
         if (isLoading) ...[
           const SizedBox(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+            child: Center(child: CircularProgressIndicator()),
           ),
         ],
         if (isError) ...[
