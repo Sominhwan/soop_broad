@@ -93,18 +93,6 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
         ElevatedButton(
           onPressed: () {
             _permissionWithNotification();
-            // PermissionStatus status = await permissionsHandler.requestNotificationPermission();
-            // if (status == PermissionStatus.granted) {
-            //   // Permission granted
-            //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            //     content: Text('Camera permission granted'),
-            //   ));
-            // } else {
-            //   // Permission denied
-            //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            //     content: Text('Camera permission denied'),
-            //   ));
-            // }
           },
           child: const Text('알림권한 허락'),
         ),
