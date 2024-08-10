@@ -24,7 +24,6 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  // late final PageController _pageController = PageController();
   DateTime? currentBackPressTime;
 
   @override
