@@ -44,7 +44,6 @@ class LocalNotification {
   void notificationResponse(NotificationResponse details) async {
     log('Notification payload: ${details.payload}');
     if (details.payload != null) {
-      // final data = jsonDecode(details.payload!);
       _handleNotificationPayload(details.payload);
     }
   }
