@@ -39,7 +39,6 @@ class LocalNotification {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
   }
-
   /// local payload 이벤트 처리
   void notificationResponse(NotificationResponse details) async {
     log('Notification payload: ${details.payload}');
@@ -50,7 +49,6 @@ class LocalNotification {
   void _handleNotificationPayload(String? payload) {
     log('Handling notification payload: $payload');
   }
-
   /// local notification 보내기
   void sendMessage({
     required String channelId,
@@ -84,7 +82,6 @@ class LocalNotification {
 
     await _local.show(id, title, content, details, payload: payload);
   }
-
   /// local notification 시간별 보내기
   // void sendPeriodicallyMessage() async {
   //   // 2024-01-22 00:00:00.000Z
@@ -102,12 +99,10 @@ class LocalNotification {
   //     matchDateTimeComponents: null,
   //   );
   // }
-
   /// local notification 취소
   void cancel(int channelId) async {
     await _local.cancel(channelId);
   }
-  
   /// local notification 전체쥐소
   void cancelAll() async {
     await _local.cancelAll();
