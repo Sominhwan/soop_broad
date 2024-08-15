@@ -33,7 +33,6 @@ class LocalNotification {
       onDidReceiveNotificationResponse: notificationResponse
     );
   }
-
   /// local notification 시간 초기화
   void initializationTime() async {
     tz.initializeTimeZones();
