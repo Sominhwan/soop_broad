@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:soop_broad/views/sports/model/daum_post_model.dart';
 
 
 class SportsView extends StatefulWidget {
@@ -41,7 +42,7 @@ class _SportsViewState extends State<SportsView> {
             _controller.addJavaScriptHandler(
               handlerName: 'onSelectAddress',
               callback: (args) {
-                // Map<String, dynamic> fromMap = args.first;
+                Map<String, dynamic> fromMap = args.first;
                 // DaumPostModel data = _dataSetting(fromMap);
                 // Navigator.of(context).pop(data);
               }
