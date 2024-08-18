@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:soop_broad/views/sports/model/daum_post_model.dart';
-
 
 class SportsView extends StatefulWidget {
   const SportsView({super.key});
