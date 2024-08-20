@@ -1,29 +1,29 @@
 
 class DaumPostModel {
-  String ?address;
-  String ?roadAddress;
-  String ?jibunAddress;
-  String ?sido;
-  String ?sigungu;
-  String ?bname;
-  String ?roadname;
-  String ?buildingName;
-  String ?addressEnglish;
-  String ?roadAddressEnglish;
-  String ?jibunAddressEnglish;
-  String ?sidoEnglish;
-  String ?sigunguEnglish;
-  String ?bnameEnglish;
-  String ?roadnameEnglish;
-  String ?zonecode;
-  String ?sigunguCode;
-  String ?bcode;
-  String ?buildingCode;
-  String ?roadnameCode;
-  String ?addressType;
-  String ?apartment;
-  String ?userLanguageType;
-  String ?userSelectedType;
+  String ? address;
+  String ? roadAddress;
+  String ? jibunAddress;
+  String ? sido;
+  String ? sigungu;
+  String ? bname;
+  String ? roadname;
+  String ? buildingName;
+  String ? addressEnglish;
+  String ? roadAddressEnglish;
+  String ? jibunAddressEnglish;
+  String ? sidoEnglish;
+  String ? sigunguEnglish;
+  String ? bnameEnglish;
+  String ? roadnameEnglish;
+  String ? zonecode;
+  String ? sigunguCode;
+  String ? bcode;
+  String ? buildingCode;
+  String ? roadnameCode;
+  String ? addressType;
+  String ? apartment;
+  String ? userLanguageType;
+  String ? userSelectedType;
 
   DaumPostModel({
     this.address,
