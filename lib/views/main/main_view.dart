@@ -57,9 +57,9 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     final MainProvider(
-        :page,
-        :appBarTitle,
-        :pageController
+      :page,
+      :appBarTitle,
+      :pageController
     ) = context.watch<MainProvider>();
 
     return PopScope(
