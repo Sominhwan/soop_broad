@@ -71,58 +71,58 @@ class _MainViewState extends State<MainView> {
       },
       child: SafeArea(
         child: ValueListenableBuilder<bool>(
-            valueListenable: CustomThemeMode.current,
-            builder: (context, value, child) {
-              return Scaffold(
-                key: _scaffoldKey,
-                appBar: CustomAppBar(
-                  title: appBarTitle,
-                  scaffoldKey: _scaffoldKey,
+          valueListenable: CustomThemeMode.current,
+          builder: (context, value, child) {
+            return Scaffold(
+              key: _scaffoldKey,
+              appBar: CustomAppBar(
+                title: appBarTitle,
+                scaffoldKey: _scaffoldKey,
+              ),
+              endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
+              body: PageView(
+                controller: pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (index) => context.read<MainProvider>().changeIndex(index),
+                children: const [
+                  HomeView(),
+                  SportsView(),
+                  Center(
+                    child: Text('MY'),
+                  ),
+                  MoreView()
+                ],
+              ),
+              bottomNavigationBar: Theme(
+                data: Theme.of(context).copyWith(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  splashFactory: NoSplash.splashFactory,
                 ),
-                endDrawer: CustomDrawer(scaffoldKey: _scaffoldKey),
-                body: PageView(
-                  controller: pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (index) => context.read<MainProvider>().changeIndex(index),
-                  children: const [
-                    HomeView(),
-                    SportsView(),
-                    Center(
-                      child: Text('MY'),
-                    ),
-                    MoreView()
+                child: BottomNavigationBar(
+                  currentIndex: page,
+                  items: const [
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.home),
+                        label: '홈'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.sports),
+                        label: '스포츠'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.my_library_add),
+                        label: 'MY'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.more_horiz),
+                        label: '더보기'),
                   ],
+                  onTap: (value) {
+                    pageController.jumpToPage(value);
+                    context.read<MainProvider>().changeIndex(value);
+                  },
                 ),
-                bottomNavigationBar: Theme(
-                  data: Theme.of(context).copyWith(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    splashFactory: NoSplash.splashFactory,
-                  ),
-                  child: BottomNavigationBar(
-                    currentIndex: page,
-                    items: const [
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.home),
-                          label: '홈'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.sports),
-                          label: '스포츠'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.my_library_add),
-                          label: 'MY'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.more_horiz),
-                          label: '더보기'),
-                    ],
-                    onTap: (value) {
-                      pageController.jumpToPage(value);
-                      context.read<MainProvider>().changeIndex(value);
-                    },
-                  ),
-                ),
-              );
-            }
+              ),
+            );
+          }
         ),
       ),
     );
