@@ -102,18 +102,10 @@ class _MainViewState extends State<MainView> {
                 child: BottomNavigationBar(
                   currentIndex: page,
                   items: const [
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: '홈'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.sports),
-                        label: '스포츠'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.my_library_add),
-                        label: 'MY'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.more_horiz),
-                        label: '더보기'),
+                    BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
+                    BottomNavigationBarItem(icon: Icon(Icons.sports), label: '스포츠'),
+                    BottomNavigationBarItem(icon: Icon(Icons.my_library_add), label: 'MY'),
+                    BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: '더보기'),
                   ],
                   onTap: (value) {
                     pageController.jumpToPage(value);
