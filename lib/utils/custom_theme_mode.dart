@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 class CustomThemeMode {
   static final CustomThemeMode instance = CustomThemeMode._internal();
+  factory CustomThemeMode() => instance;
+
   static ValueNotifier<ThemeMode> themeMode = ValueNotifier(ThemeMode.light);
   static ValueNotifier<bool> current = ValueNotifier(true);
-  factory CustomThemeMode() => instance;
 
   static void change() {
     switch (themeMode.value) {
