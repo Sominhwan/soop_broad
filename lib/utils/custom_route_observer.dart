@@ -5,7 +5,6 @@ import 'custom_route_settings.dart';
 
 class CustomRouteObserver extends RouteObserver<PageRoute> {
   static final CustomRouteObserver _singleton = CustomRouteObserver._internal();
-
   factory CustomRouteObserver() => _singleton;
 
   CustomRouteObserver._internal();
