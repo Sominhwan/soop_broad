@@ -10,6 +10,7 @@ import 'package:soop_broad/utils/custom_theme_mode.dart';
 import 'package:soop_broad/utils/navigation_service.dart';
 import 'package:soop_broad/views/main/main_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
+import 'package:soop_broad/views/more/provider/more_provider.dart';
 import 'common/widget/custom_toast_widget.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -42,6 +43,7 @@ class SoopMobileApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MainProvider()),
+        ChangeNotifierProvider(create: (_) => MoreProvider()),
       ],
       child: ValueListenableBuilder<ThemeMode>(
         valueListenable: CustomThemeMode.themeMode,
