@@ -11,12 +11,13 @@ import '../../views/app_constants.dart';
 import '../navigation_service.dart';
 
 class BaseApi {
-  static final baseDio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 30),
-    receiveTimeout: const Duration(minutes: 3),
-    baseUrl: appEnv.url,
-  ))
-    ..interceptors.add(InterceptorsWrapper(
+  static final baseDio = Dio(
+    BaseOptions(
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(minutes: 3),
+      baseUrl: appEnv.url,
+    )
+  ) ..interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         // options.headers.addAll({
         //   'X-Auth-Token': UserInfo().accessToken,
