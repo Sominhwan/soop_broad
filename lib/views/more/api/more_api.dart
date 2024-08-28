@@ -16,10 +16,6 @@ class MoreApi {
     try {
       // final response = await _dio.get('/api/m/getEmergencyGuideMapManage', queryParameters: params);
       final response = await _dio.get('/api/v1/getEmergencyGuideMapManage', queryParameters: params);
-      // final data = response.data['data'] as Map<String, dynamic>?;
-      // if (data == null) {
-      //   throw Exception("Data not found");
-      // }
 
       return 'test';
     } finally {
