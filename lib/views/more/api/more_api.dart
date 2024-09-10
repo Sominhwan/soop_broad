@@ -14,7 +14,7 @@ class MoreApi {
 
   Future<String> getNotice(Map<String, dynamic> params) async {
     try {
-      final response = await _dio.get('/api/v1/getEmergencyGuideMapManage', queryParameters: params);
+      await _dio.get('/api/v1/getEmergencyGuideMapManage', queryParameters: params);
 
       return 'test';
     } finally {
