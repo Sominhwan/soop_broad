@@ -56,7 +56,14 @@ class _MoreViewState extends State<MoreView> {
                           _moreViewController.getTestData();
                         },
                         child: const Text('API 테스트'),
-                      )
+                      ),
+                      InkWell(
+                        onTap: () {
+                          log('클릭');
+                          _moreViewController.getTestData();
+                        },
+                        child: const Text('테스트2'),
+                      ),
                     ],
                   ),
                 ),

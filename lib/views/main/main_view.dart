@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
 import 'package:soop_broad/views/home/home_view.dart';
@@ -46,7 +47,9 @@ class _MainViewState extends State<MainView> {
 
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
         currentBackPressTime = now;
-        CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
+        Fluttertoast.showToast(msg: '모든 정보를 입력해주세요.', backgroundColor: const Color.fromRGBO(100, 100, 100, 0.9), gravity: ToastGravity.BOTTOM);
+        //CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
+
         return false;
       }
       return true;

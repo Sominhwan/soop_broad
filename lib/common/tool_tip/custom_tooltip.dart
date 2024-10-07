@@ -13,16 +13,34 @@ class CustomTooltip extends StatefulWidget {
     required this.message,
     this.duration = 0,
     this.iconSize = 14,
-    this.iconColor = Colors.grey
+    this.iconColor = Colors.grey,
   });
 
   @override
   CustomTooltipState createState() => CustomTooltipState();
 }
 
-class CustomTooltipState extends State<CustomTooltip> {
+class CustomTooltipState extends State<CustomTooltip>
+    with SingleTickerProviderStateMixin {
   OverlayEntry? _overlayEntry;
   Timer? _hideTimer;
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // 애니메이션 컨트롤러 초기화
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300), // fade in/out 시간
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    );
+  }
 
   void _showTooltip(BuildContext context) {
     final overlay = Overlay.of(context);
@@ -46,21 +64,24 @@ class CustomTooltipState extends State<CustomTooltip> {
           Positioned(
             top: targetPosition.dy + targetSize.height + 5,
             left: targetPosition.dx,
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width * 0.9, // 최대 너비를 화면 너비의 90%로 설정
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey[700],
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  widget.message,
-                  style: const TextStyle(color: Colors.white),
-                  softWrap: true, // 텍스트 줄바꿈 활성화
+            child: FadeTransition(
+              opacity: _fadeAnimation, // fade 애니메이션 추가
+              child: Material(
+                color: Colors.transparent,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.9,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[700],
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    widget.message,
+                    style: const TextStyle(color: Colors.white),
+                    softWrap: true,
+                  ),
                 ),
               ),
             ),
@@ -70,6 +91,7 @@ class CustomTooltipState extends State<CustomTooltip> {
     );
 
     overlay.insert(_overlayEntry!);
+    _animationController.forward(); // fade in 효과 시작
 
     if (widget.duration > 0) {
       _hideTimer?.cancel();
@@ -81,13 +103,17 @@ class CustomTooltipState extends State<CustomTooltip> {
 
   void _hideTooltip() {
     _hideTimer?.cancel();
-    _overlayEntry?.remove();
-    _overlayEntry = null;
+    _animationController.reverse(); // fade out 효과 시작
+    Future.delayed(const Duration(milliseconds: 300), () {
+      _overlayEntry?.remove();
+      _overlayEntry = null;
+    });
   }
 
   @override
   void dispose() {
     _hideTimer?.cancel();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -101,7 +127,11 @@ class CustomTooltipState extends State<CustomTooltip> {
           _hideTooltip();
         }
       },
-      child: Icon(Icons.info_outline, size: widget.iconSize, color: widget.iconColor),
+      child: Icon(
+        Icons.info_outline,
+        size: widget.iconSize,
+        color: widget.iconColor,
+      ),
     );
   }
 }
