@@ -49,7 +49,6 @@ class _MainViewState extends State<MainView> {
         currentBackPressTime = now;
         Fluttertoast.showToast(msg: '모든 정보를 입력해주세요.', backgroundColor: const Color.fromRGBO(100, 100, 100, 0.9), gravity: ToastGravity.BOTTOM);
         //CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
-
         return false;
       }
       return true;
