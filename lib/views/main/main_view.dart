@@ -1,16 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:soop_broad/common/app_bar/custom_app_bar.dart';
+import 'package:soop_broad/common/widget/toast_widget.dart';
 import 'package:soop_broad/views/home/home_view.dart';
 import 'package:soop_broad/views/main/provider/main_provider.dart';
 import 'package:soop_broad/views/more/more_view.dart';
 import 'package:soop_broad/views/sports/sports_view.dart';
 
 import '../../common/drawer/custom_drawer.dart';
-import '../../common/widget/custom_toast_widget.dart';
 import '../../utils/custom_theme_mode.dart';
 
 class MainView extends StatefulWidget {
@@ -47,8 +46,10 @@ class _MainViewState extends State<MainView> {
 
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
         currentBackPressTime = now;
-        Fluttertoast.showToast(msg: '모든 정보를 입력해주세요.', backgroundColor: const Color.fromRGBO(100, 100, 100, 0.9), gravity: ToastGravity.BOTTOM);
+        // Fluttertoast.showToast(msg: '모든 정보를 입력해주세요.', backgroundColor: const Color.fromRGBO(100, 100, 100, 0.9), gravity: ToastGravity.BOTTOM);
         //CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
+        // NativeToast().makeText(message: '앱 종료', duration: 3);
+        ToastWidget().makeText(message: '앱 종료', duration: 3);
         return false;
       }
       return true;

@@ -58,20 +58,18 @@ class BaseApi {
         final context = NavigationService.globalCtx!;
         final String message = switch (error) {
           DioException(response: Response(data: {'msg': String msg}))
-          when msg.trim().isNotEmpty =>
-              msg.trim(),
+          when msg.trim().isNotEmpty => msg.trim(),
           DioException(
-          type: DioExceptionType.connectionTimeout ||
-          DioExceptionType.sendTimeout ||
-          DioExceptionType.connectionError
-          ) =>
+          type: DioExceptionType.connectionTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionError) =>
           '네트워크 연결이 불안정합니다.',
-          DioException(type: DioExceptionType.receiveTimeout) =>
+          DioException(
+          type: DioExceptionType.receiveTimeout) =>
           '서버 응답 시간을 초과하였습니다.',
           _ => error.message ?? '서버 연결이 불안정합니다.'
         };
         // FirebaseCrashlytics.instance.recordError(error, error.stackTrace);
         // TODO 추후 수정 api 에러시 메시지 출력함
+
         showTopSnackBar(
           Overlay.of(context),
           CustomSnackBar.error(
@@ -83,13 +81,13 @@ class BaseApi {
       },
     ));
 
-  static final _refreshDio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 30),
-    receiveTimeout: const Duration(minutes: 3),
-    baseUrl: appEnv.url,
-  ));
+  // static final _refreshDio = Dio(BaseOptions(
+  //   connectTimeout: const Duration(seconds: 30),
+  //   receiveTimeout: const Duration(minutes: 3),
+  //   baseUrl: appEnv.url,
+  // ));
 
-  static final _refreshCache = AsyncCache<void>.ephemeral();
+  // static final _refreshCache = AsyncCache<void>.ephemeral();
 
   // static Future<void> _tokenRefresh() {
   //   return _refreshCache.fetch(
@@ -118,7 +116,7 @@ class BaseApi {
   //   );
   // }
 
-  static Future<Response> _retry(RequestOptions requestOptions) {
-    return baseDio.fetch(requestOptions..extra['retried'] = true);
-  }
+  // static Future<Response> _retry(RequestOptions requestOptions) {
+  //   return baseDio.fetch(requestOptions..extra['retried'] = true);
+  // }
 }
