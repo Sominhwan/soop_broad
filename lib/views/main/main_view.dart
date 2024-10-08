@@ -47,7 +47,7 @@ class _MainViewState extends State<MainView> {
       if (currentBackPressTime == null || now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
         currentBackPressTime = now;
         // Fluttertoast.showToast(msg: '모든 정보를 입력해주세요.', backgroundColor: const Color.fromRGBO(100, 100, 100, 0.9), gravity: ToastGravity.BOTTOM);
-        //CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
+        // CustomToastWidget.showToast(text: '앱을 종료하려면 한번 더 누르세요', bottom: 80);
         // NativeToast().makeText(message: '앱 종료', duration: 3);
         ToastWidget().makeText(message: '앱 종료', duration: 3);
         return false;
