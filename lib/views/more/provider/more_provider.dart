@@ -14,6 +14,7 @@ class MoreProvider extends ChangeNotifier {
     try {
       var response = await MoreApi().getNotice({'clntId': 'test'}).wrapLoading(constMsgLoading);
       data = response;
+
       notifyListeners();
     } finally {
 
