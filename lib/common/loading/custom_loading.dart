@@ -24,6 +24,7 @@ class CustomLoadingContext {
   }
 
   CustomLoadingContext._internal();
+
   BuildContext? _context;
 
   void setContext(BuildContext context) {
