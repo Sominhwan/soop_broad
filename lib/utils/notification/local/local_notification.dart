@@ -45,9 +45,11 @@ class LocalNotification {
       _handleNotificationPayload(details.payload);
     }
   }
+
   void _handleNotificationPayload(String? payload) {
     log('Handling notification payload: $payload');
   }
+
   /// local notification 보내기
   void sendMessage({
     required String channelId,
