@@ -91,9 +91,7 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ElevatedButton(
-          onPressed: () {
-            _permissionWithNotification();
-          },
+          onPressed: () => _permissionWithNotification(),
           child: const Text('알림권한 허락'),
         ),
         ElevatedButton(
