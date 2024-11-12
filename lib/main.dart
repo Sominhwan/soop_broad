@@ -71,7 +71,6 @@ class SoopMobileApp extends StatelessWidget {
             routes: routes,
             navigatorKey: NavigationService.navigatorKey,
             navigatorObservers: [CustomRouteObserver()],
-            //initialRoute: LoginView.path,
             builder: (context, child) {
               final loader = EasyLoading.init();
               return MediaQuery(
