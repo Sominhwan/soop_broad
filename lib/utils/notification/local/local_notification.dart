@@ -33,11 +33,13 @@ class LocalNotification {
       onDidReceiveNotificationResponse: notificationResponse
     );
   }
+
   /// local notification 시간 초기화
   void initializationTime() async {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
   }
+
   /// local payload 이벤트 처리
   void notificationResponse(NotificationResponse details) async {
     log('Notification payload: ${details.payload}');
