@@ -120,7 +120,6 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
         ElevatedButton(
           onPressed: () async {
             LocalNotification().initializationTime();
-            // LocalNotification().sendPeriodicallyMessage();
           },
           child: const Text('시간별 메시지 전송'),
         ),
