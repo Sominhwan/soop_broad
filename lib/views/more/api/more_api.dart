@@ -17,8 +17,6 @@ class MoreApi {
       await _dio.get('/api/m/getEmergencyGuideMapManage', queryParameters: params);
 
       return 'test';
-    } finally {
-
-    }
+    } finally {}
   }
 }
