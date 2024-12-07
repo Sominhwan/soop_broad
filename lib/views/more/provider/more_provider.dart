@@ -16,8 +16,6 @@ class MoreProvider extends ChangeNotifier {
       data = response;
 
       notifyListeners();
-    } finally {
-
-    }
+    } finally {}
   }
 }
