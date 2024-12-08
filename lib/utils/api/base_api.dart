@@ -19,9 +19,6 @@ class BaseApi {
     )
   ) ..interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        // options.headers.addAll({
-        //   'X-Auth-Token': UserInfo().accessToken,
-        // });
         return handler.next(options);
       },
       onResponse: (response, handler) {
@@ -44,14 +41,7 @@ class BaseApi {
         case DioException(
         requestOptions: RequestOptions(extra: {'retried': != true}),
         response: Response(data: {'code': 401})
-        )) {
-          // try {
-          //   return handler.resolve(await _tokenRefresh()
-          //       .then((_) => _retry(error.requestOptions)));
-          // } on DioException catch (e) {
-          //   return handler.next(e);
-          // }
-        }
+        )) {}
         log('onError');
         log('${error.message}');
         log('${error.response?.data}');
