@@ -24,6 +24,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   DateTime? currentBackPressTime;
 
   @override
