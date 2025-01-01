@@ -39,8 +39,8 @@ class BaseApi {
       onError: (error, handler) async {
         if (error
         case DioException(
-        requestOptions: RequestOptions(extra: {'retried': != true}),
-        response: Response(data: {'code': 401})
+          requestOptions: RequestOptions(extra: {'retried': != true}),
+          response: Response(data: {'code': 401})
         )) {}
         log('onError');
         log('${error.message}');
