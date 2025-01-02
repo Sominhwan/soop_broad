@@ -59,7 +59,6 @@ class BaseApi {
         };
         // FirebaseCrashlytics.instance.recordError(error, error.stackTrace);
         // TODO 추후 수정 api 에러시 메시지 출력함
-
         showTopSnackBar(
           Overlay.of(context),
           CustomSnackBar.error(
@@ -70,7 +69,6 @@ class BaseApi {
         return handler.next(error);
       },
     ));
-
   // static final _refreshDio = Dio(BaseOptions(
   //   connectTimeout: const Duration(seconds: 30),
   //   receiveTimeout: const Duration(minutes: 3),
