@@ -87,7 +87,7 @@ class CustomToastWidgetState extends State<CustomToastWidget> with SingleTickerP
     return FadeTransition(
       opacity: _opacityAnimation!,
       child: Stack(
-        alignment: Alignment.center, // Stack 내의 요소들을 중앙에 배치
+        alignment: Alignment.center,
         children: [
           Positioned(
             bottom: widget.bottom,
@@ -95,7 +95,7 @@ class CustomToastWidgetState extends State<CustomToastWidget> with SingleTickerP
               color: Colors.transparent,
               child: Container(
                 constraints: BoxConstraints(
-                  minWidth: 50, // 최소 너비를 설정
+                  minWidth: 50,
                   maxWidth: MediaQuery.of(context).size.width * 0.8,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
