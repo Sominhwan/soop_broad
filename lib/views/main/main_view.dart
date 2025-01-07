@@ -53,6 +53,7 @@ class _MainViewState extends State<MainView> {
         // NativeToast().makeText(message: '앱 종료', duration: 3);
 
         ToastWidget().makeText(message: '앱 종료', duration: 3);
+
         return false;
       }
       return true;
