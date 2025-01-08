@@ -42,9 +42,11 @@ class BaseApi {
           requestOptions: RequestOptions(extra: {'retried': != true}),
           response: Response(data: {'code': 401})
         )) {}
+
         log('onError');
         log('${error.message}');
         log('${error.response?.data}');
+
         final context = NavigationService.globalCtx!;
         final String message = switch (error) {
           DioException(response: Response(data: {'msg': String msg}))
