@@ -13,7 +13,6 @@ class MoreProvider extends ChangeNotifier {
   Future<void> getTestData() async {
     try {
       var response = await MoreApi().getNotice({'clntId': 'test'}).wrapLoading(constMsgLoading);
-
       data = response;
 
       notifyListeners();
