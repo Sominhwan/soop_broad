@@ -85,6 +85,7 @@ class LocalNotification {
 
     await _local.show(id, title, content, details, payload: payload);
   }
+
   /// local notification 시간별 보내기
   // void sendPeriodicallyMessage() async {
   //   // 2024-01-22 00:00:00.000Z
@@ -102,10 +103,12 @@ class LocalNotification {
   //     matchDateTimeComponents: null,
   //   );
   // }
+
   /// local notification 취소
   void cancel(int channelId) async {
     await _local.cancel(channelId);
   }
+
   /// local notification 전체쥐소
   void cancelAll() async {
     await _local.cancelAll();
