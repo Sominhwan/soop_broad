@@ -6,6 +6,7 @@ class CustomThemeMode {
   factory CustomThemeMode() => instance;
 
   static ValueNotifier<ThemeMode> themeMode = ValueNotifier(ThemeMode.light);
+
   static ValueNotifier<bool> current = ValueNotifier(true);
 
   static void change() {
