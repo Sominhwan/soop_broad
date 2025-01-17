@@ -26,6 +26,7 @@ void main() async {
   ]);
 
   CustomThemeMode.instance;
+
   runApp(const SoopMobileApp());
 }
 
