@@ -50,9 +50,11 @@ class MainProvider extends ChangeNotifier {
       appBarTitle = getAppBarTitle(page);
       pageController.jumpToPage(page);
       notifyListeners();
+
       return false;
     } else {
       appBarTitle = '메인';
+
       return true;
     }
   }
