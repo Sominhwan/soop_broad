@@ -8,16 +8,16 @@ Uri? getAppStoreUrl(String aosPackage, String iosAppId) {
     if (iosAppId.isEmpty) {
       return null;
     }
-    return Uri.parse('itms-apps://itunes.apple.com/app/id$iosAppId');
 
+    return Uri.parse('itms-apps://itunes.apple.com/app/id$iosAppId');
   } else if (Platform.isAndroid) {
     if (aosPackage.isEmpty) {
       return null;
     }
     return Uri.parse('market://details?id=$aosPackage');
   }
-  return null;
 
+  return null;
 }
 
 enum EnvProfile {
