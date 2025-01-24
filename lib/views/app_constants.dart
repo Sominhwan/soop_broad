@@ -31,5 +31,6 @@ enum EnvProfile {
   const EnvProfile({
     required this.url,
   });
+
   final String url;
 }
