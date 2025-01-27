@@ -71,6 +71,7 @@ class BaseApi {
         return handler.next(error);
       },
     ));
+
   // static final _refreshDio = Dio(BaseOptions(
   //   connectTimeout: const Duration(seconds: 30),
   //   receiveTimeout: const Duration(minutes: 3),
