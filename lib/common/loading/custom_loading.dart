@@ -6,7 +6,6 @@ extension FutureExtension<T> on Future<T> {
   Future<T> wrapLoading(String? message) {
     final context = CustomLoadingContext().context!;
     final overlay = Overlay.of(context);
-
     final overlayEntry = OverlayEntry(
       builder: (context) => CustomLoading(message: message),
     );
