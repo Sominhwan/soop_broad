@@ -18,12 +18,14 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
+
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
   }
 
   @override
   void dispose() {
     _tabController.dispose();
+
     super.dispose();
   }
 
