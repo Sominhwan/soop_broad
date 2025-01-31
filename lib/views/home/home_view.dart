@@ -81,6 +81,7 @@ class _LikeTabState extends State<LikeTab> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
+
     LocalNotification().initialization();
   }
 
