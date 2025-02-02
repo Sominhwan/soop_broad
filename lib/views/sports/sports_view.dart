@@ -19,12 +19,14 @@ class _SportsViewState extends State<SportsView> {
   @override
   void initState() {
     super.initState();
+
     _localhostServer.start();
   }
 
   @override
   void dispose() {
     _localhostServer.close();
+
     super.dispose();
   }
 
