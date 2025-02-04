@@ -68,6 +68,7 @@ class BaseApi {
           ),
           displayDuration: const Duration(seconds: 10),
         );
+
         return handler.next(error);
       },
     ));
