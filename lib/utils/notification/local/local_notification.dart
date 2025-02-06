@@ -28,6 +28,7 @@ class LocalNotification {
     );
 
     InitializationSettings settings = InitializationSettings(android: android, iOS: ios);
+
     await _local.initialize(
       settings,
       onDidReceiveNotificationResponse: notificationResponse
@@ -43,6 +44,7 @@ class LocalNotification {
   /// local payload 이벤트 처리
   void notificationResponse(NotificationResponse details) async {
     log('Notification payload: ${details.payload}');
+
     if (details.payload != null) {
       _handleNotificationPayload(details.payload);
     }
