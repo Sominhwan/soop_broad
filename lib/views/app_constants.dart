@@ -14,6 +14,7 @@ Uri? getAppStoreUrl(String aosPackage, String iosAppId) {
     if (aosPackage.isEmpty) {
       return null;
     }
+
     return Uri.parse('market://details?id=$aosPackage');
   }
 
