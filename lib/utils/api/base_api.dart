@@ -25,8 +25,8 @@ class BaseApi {
         log('onResponse');
         return switch (response) {
           Response(
-          requestOptions: RequestOptions(responseType: ResponseType.json),
-          data: {'code': != 200}
+            requestOptions: RequestOptions(responseType: ResponseType.json),
+            data: {'code': != 200}
           ) =>
           throw DioException(
             type: DioExceptionType.badResponse,
