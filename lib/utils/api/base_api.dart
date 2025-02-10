@@ -54,9 +54,8 @@ class BaseApi {
           DioException(
           type: DioExceptionType.connectionTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionError) =>
           '네트워크 연결이 불안정합니다.',
-          DioException(
-          type: DioExceptionType.receiveTimeout) =>
-          '서버 응답 시간을 초과하였습니다.',
+          DioException(type: DioExceptionType.receiveTimeout)
+          => '서버 응답 시간을 초과하였습니다.',
           _ => error.message ?? '서버 연결이 불안정합니다.'
         };
         // FirebaseCrashlytics.instance.recordError(error, error.stackTrace);
