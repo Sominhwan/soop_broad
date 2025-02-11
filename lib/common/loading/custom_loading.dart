@@ -37,7 +37,10 @@ class CustomLoadingContext {
 class CustomLoading extends StatelessWidget {
   final String? message;
 
-  const CustomLoading({super.key, this.message});
+  const CustomLoading({
+    super.key,
+    this.message
+  });
 
   @override
   Widget build(BuildContext context) {
