@@ -59,7 +59,8 @@ class CustomToastWidget extends StatefulWidget {
   CustomToastWidgetState createState() => CustomToastWidgetState();
 }
 
-class CustomToastWidgetState extends State<CustomToastWidget> with SingleTickerProviderStateMixin {
+class CustomToastWidgetState extends State<CustomToastWidget>
+    with SingleTickerProviderStateMixin {
   AnimationController? _controller;
   Animation<double>? _opacityAnimation;
 
@@ -75,7 +76,8 @@ class CustomToastWidgetState extends State<CustomToastWidget> with SingleTickerP
     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller!);
     _controller!.forward();
 
-    Future.delayed(const Duration(seconds: 2)).then((value) => _controller!.reverse().then((value) => widget.onDismissed()));
+    Future.delayed(const Duration(seconds: 2)).then((value) =>
+        _controller!.reverse().then((value) => widget.onDismissed()));
   }
 
   @override
