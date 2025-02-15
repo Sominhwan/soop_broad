@@ -23,6 +23,7 @@ class BaseApi {
       },
       onResponse: (response, handler) {
         log('onResponse');
+
         return switch (response) {
           Response(
             requestOptions: RequestOptions(responseType: ResponseType.json),
