@@ -104,6 +104,7 @@ class CustomThemeData {
       titleTextStyle: TextStyle(color: Colors.white),
     ),
   );
+
   /// 라이트 모드 textStyle
   static const TextTheme lightTextTheme = TextTheme(
     bodyLarge: TextStyle(color: Colors.black),
@@ -122,6 +123,7 @@ class CustomThemeData {
     titleMedium: TextStyle(color: Colors.black),
     titleSmall: TextStyle(color: Colors.black),
   );
+
   /// 다크 모드 textStyle
   static const TextTheme darkTextTheme = TextTheme(
     bodyLarge: TextStyle(color: Colors.white),
