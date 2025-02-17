@@ -22,6 +22,7 @@ class LocalNotification {
     log('flutter local notification 초기화');
 
     AndroidInitializationSettings android = const AndroidInitializationSettings("@mipmap/ic_launcher");
+
     DarwinInitializationSettings ios = const DarwinInitializationSettings(
       requestSoundPermission: false,
       requestBadgePermission: false,
