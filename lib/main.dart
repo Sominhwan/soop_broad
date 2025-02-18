@@ -74,6 +74,7 @@ class SoopMobileApp extends StatelessWidget {
             navigatorObservers: [CustomRouteObserver()],
             builder: (context, child) {
               final loader = EasyLoading.init();
+
               return MediaQuery(
                 data: mediaQuery.copyWith(textScaler: TextScaler.noScaling),
                 child: loader(context, child),
