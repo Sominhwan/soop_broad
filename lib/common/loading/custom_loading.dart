@@ -8,7 +8,8 @@ extension FutureExtension<T> on Future<T> {
 
     final overlay = Overlay.of(context);
     final overlayEntry = OverlayEntry(
-      builder: (context) => CustomLoading(message: message),
+      builder: (context) =>
+          CustomLoading(message: message),
     );
 
     overlay.insert(overlayEntry);
